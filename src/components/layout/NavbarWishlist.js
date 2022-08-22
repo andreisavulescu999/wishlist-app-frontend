@@ -20,17 +20,18 @@ function NavbarWishlist() {
   return (
     <Navbar sticky='bottom' bg="light" expand="lg">
       <Container>
-        <Navbar.Brand href="/">Wishlist App</Navbar.Brand>
+        <Navbar.Brand href="/"><i class="bi bi-list-check"></i> Wishlist App</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto"> 
               <Nav.Link href="/login">Login</Nav.Link>
-              <Nav.Link href="/register">Register</Nav.Link>                       
+              <Nav.Link href="/register">Register</Nav.Link>  
+              <Nav.Link href="/group">Groups</Nav.Link>                       
           </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
   );
 }
-
+ 
 export default NavbarWishlist;

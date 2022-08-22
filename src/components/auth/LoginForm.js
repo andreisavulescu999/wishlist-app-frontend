@@ -1,8 +1,9 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
+
 import { useNavigate } from "react-router-dom";
-import loginUser from '/server/src/controllers/user.js'
+
 import React, { useState } from "react";
 
 function LoginForm() {
@@ -10,13 +11,13 @@ function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-    const handleClick = async() => {
-      const resp = await loginUser(email,password);
-      if (resp.token) {
-          // setToken(resp.token);
-          navigate('/profile');
-      }
-  }
+  //   const handleClick = async() => {
+  //     const resp = await loginUser(email,password);
+  //     if (resp.token) {
+  //         // setToken(resp.token);
+  //         navigate('/profile');
+  //     }
+  // }
   return (
     <Card>
       <Card.Title>Login</Card.Title>
@@ -32,7 +33,7 @@ function LoginForm() {
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
         <Form.Check type="checkbox" label="Check me out"/>
       </Form.Group>
-      <Button onClick={handleClick} variant="primary" type="submit">
+      <Button variant="primary" type="submit">
         Submit
       </Button>
     </Form>
