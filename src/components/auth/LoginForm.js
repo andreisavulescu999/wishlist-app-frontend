@@ -8,8 +8,8 @@ import React, { useState } from "react";
 
 function LoginForm() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
 
   //   const handleClick = async() => {
   //     const resp = await loginUser(email,password);
@@ -18,6 +18,15 @@ function LoginForm() {
   //         navigate('/profile');
   //     }
   // }
+
+  const setPassword = (password) => {
+
+  };
+
+  const setEmail = (email) => {
+
+  };
+
   return (
     <Card>
       <Card.Title>Login</Card.Title>

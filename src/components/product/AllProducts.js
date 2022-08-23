@@ -2,25 +2,25 @@ import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import axios from 'axios';
 
-// const products = await axios.get(`https://locallhost:3001/product/id`)
+// const products = await axios.get(`https://locallhost:3001/products`)
 //     .then(res => {
 //       console.log(res);
 //       console.log(res.data);
 //     });
 
 // console.log(products);
-const Product = (product) => {
+const AllProducts = (products) => {
     return(
         <Card className='row col-md-12' style={{ width: '18rem' }}>
-          <Card.Img variant="top" src={product.src} />
+          <Card.Img variant="top" src={products.src} />
           <Card.Body>
-            <Card.Title>{product.title}</Card.Title>
+            <Card.Title>{products.title}</Card.Title>
             <Card.Text>
-                        {product.description}
+                        {products.description}
             </Card.Text>
           </Card.Body>
           <ListGroup className="list-group-flush">
-            <ListGroup.Item>{product.feature}</ListGroup.Item>
+            <ListGroup.Item>{products.feature}</ListGroup.Item>
           </ListGroup>
           {/* <Card.Body>
             <Card.Link href="#">Card Link</Card.Link>
@@ -29,4 +29,4 @@ const Product = (product) => {
     )
 };
 
-export default Product;
+export default AllProducts;
