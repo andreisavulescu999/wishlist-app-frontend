@@ -11,7 +11,8 @@ import axios from 'axios';
 // console.log(products);
 const AllProducts = (products) => {
     return(
-        <Card className='row col-md-12' style={{ width: '18rem' }}>
+      <div>
+          <Card className='row col-md-12' style={{ width: '18rem' }}>
           <Card.Img variant="top" src={products.src} />
           <Card.Body>
             <Card.Title>{products.title}</Card.Title>
@@ -26,6 +27,8 @@ const AllProducts = (products) => {
             <Card.Link href="#">Card Link</Card.Link>
           </Card.Body> */}
         </Card>
+      </div>
+
     )
 };
 
