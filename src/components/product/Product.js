@@ -1,32 +1,53 @@
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
-import axios from 'axios';
+import Carousel from 'react-bootstrap/Carousel';
+import Table from 'react-bootstrap/Table';
 
-// const products = await axios.get(`https://locallhost:3001/product/id`)
-//     .then(res => {
-//       console.log(res);
-//       console.log(res.data);
-//     });
+import { useParams } from "react-router-dom";
 
-// console.log(products);
-const Product = (product) => {
+import { getProduct } from '../../api/product';
+
+
+const Product = () => {
+    let id = useParams();
+    const product = getProduct(id);
+    const carousel = product.images.map(function(elem) {
+      return(
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src={elem.src}
+            alt="First slide"
+          />
+          <Carousel.Caption>
+            <h3>{elem.name}</h3>
+            {/* <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> */}
+          </Carousel.Caption>
+        </Carousel.Item>
+      )
+  });
+  const table = product.features.map(function(elem,index) {
     return(
-        <Card className='row col-md-12' style={{ width: '18rem' }}>
-          <Card.Img variant="top" src={product.src} />
-          <Card.Body>
-            <Card.Title>{product.title}</Card.Title>
-            <Card.Text>
-                        {product.description}
-            </Card.Text>
-          </Card.Body>
-          <ListGroup className="list-group-flush">
-            <ListGroup.Item>{product.feature}</ListGroup.Item>
-          </ListGroup>
-          {/* <Card.Body>
-            <Card.Link href="#">Card Link</Card.Link>
-          </Card.Body> */}
-        </Card>
+        <tr>
+          <td>{index}</td>
+          <td>{elem.name}</td>
+          <td>{elem.type}</td>
+        </tr>
     )
+});
+
+  return(
+    <>
+    <Carousel>
+        {carousel}           
+    </Carousel>
+    <Table striped bordered hover variant="dark">
+        <tbody>
+                {table}
+        </tbody>
+    </Table>
+    </>
+  )
 };
 
 export default Product;

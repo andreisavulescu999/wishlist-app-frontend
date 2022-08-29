@@ -4,6 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 
 import Image from 'react';
 import { AiOutlineUser } from 'react-icons/ai';
+import {BsFillChatRightTextFill,BsFillPeopleFill,BsFillBasket3Fill,BsListStars} from "react-icons/bs";
 //import NavDropdown from 'react-bootstrap/NavDropdown';
 
 function NavbarWishlist() {
@@ -30,9 +31,10 @@ function NavbarWishlist() {
           <Nav className="me-auto"> 
               <Nav.Link href="/login">Login</Nav.Link>
               <Nav.Link href="/register">Register</Nav.Link>  
-              <Nav.Link href="/group">Groups</Nav.Link> 
-              <Nav.Link href="/products">Products</Nav.Link>
-              <Nav.Link href="/wishlists">Wishlists</Nav.Link>
+              <Nav.Link href="/chat"><BsFillChatRightTextFill/> Chat</Nav.Link>
+              <Nav.Link href="/group"><BsFillPeopleFill/> Groups</Nav.Link> 
+              <Nav.Link href="/products"><BsFillBasket3Fill/> Products</Nav.Link>
+              <Nav.Link href="/wishlists"><BsListStars/> Wishlists</Nav.Link>
           </Nav>
         </Navbar.Collapse>
         <Nav.Link href="/profile"><AiOutlineUser/></Nav.Link>

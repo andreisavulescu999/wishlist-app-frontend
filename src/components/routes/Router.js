@@ -5,6 +5,9 @@ import LoginForm from "../auth/LoginForm.js";
 import Product from "../product/Product";
 import Wishlist from "../wishlist/Wishlist";
 import AllProducts from "../product/AllProducts";
+import Chat from '../chat/Chat.js';
+import User from '../auth/User.js';
+import ModalLogin from "../auth/modallogin/ModalLogin.js";
 
 const Router = () => {
 
@@ -14,10 +17,14 @@ const Router = () => {
                 <Route path=''>
                     <Route path='/login'  element={<LoginForm/>} />
                     <Route path='/register' element={<RegisterForm/>} />
+                    <Route path='/profile'  element={<ModalLogin/>} />
                     <Route path='/products' element={<AllProducts/>} />
                     <Route path='/product/:id' element={<Product/>} />
                     <Route path='/wishlists' element={<Wishlist/>} />
-                    <Route path='/user'/>
+                    <Route path='/chat' element={<Chat/>} />
+                    <Route path='/user'>
+                    </Route>
+                    <Route path='/user/:id' element={<User/>} />
                 </Route>
             </Routes>
         </BrowserRouter>      

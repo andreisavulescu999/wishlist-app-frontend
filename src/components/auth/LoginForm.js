@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card';
 import { useNavigate } from "react-router-dom";
 import React, { useState,useContext } from "react";
 import {LoginUser} from '../../api/user';
-import { GeneralContext } from "../../context/GeneralContext";
+// import { GeneralContext } from "../../context/GeneralContext";
 
 
 function LoginForm() {
@@ -12,13 +12,13 @@ function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { setToken } = useContext(GeneralContext);
+  // const { setToken } = useContext(GeneralContext);
 
-  const Login = async() => {
-      const user = await LoginUser(email,password);
+  const Login = () => {
+      const user = LoginUser(email,password);
       console.log(user);
       if (user.token) {
-        setToken(user.token);
+        // setToken(user.token);
         navigate('/products');
     }
   };

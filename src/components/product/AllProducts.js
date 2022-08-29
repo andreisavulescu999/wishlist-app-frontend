@@ -1,35 +1,38 @@
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
-import axios from 'axios';
 
-// const products = await axios.get(`https://locallhost:3001/products`)
-//     .then(res => {
-//       console.log(res);
-//       console.log(res.data);
-//     });
+import {All} from '../../api/product';
 
-// console.log(products);
-const AllProducts = (products) => {
-    return(
-      <div>
+const AllProducts = () => {
+    const products = All();
+    if(products){
+      products.map(function(elem) {
+        return (
+          <div>
           <Card className='row col-md-12' style={{ width: '18rem' }}>
-          <Card.Img variant="top" src={products.src} />
+          <Card.Img variant="top" src={elem.image.src} />
           <Card.Body>
-            <Card.Title>{products.title}</Card.Title>
+            <Card.Title>{elem.title}</Card.Title>
             <Card.Text>
-                        {products.description}
+                        {elem.description}
             </Card.Text>
           </Card.Body>
           <ListGroup className="list-group-flush">
-            <ListGroup.Item>{products.feature}</ListGroup.Item>
+            <ListGroup.Item>{elem.feature}</ListGroup.Item>
           </ListGroup>
-          {/* <Card.Body>
-            <Card.Link href="#">Card Link</Card.Link>
-          </Card.Body> */}
+          <Card.Body>
+            <Card.Link href={"/product/".elem.id}>Card Link</Card.Link>
+          </Card.Body>
         </Card>
-      </div>
-
-    )
+        </div>
+        )
+      });
+    }
+    else{
+      return (
+        <p>No products records found</p>
+      );
+    }
 };
 
 export default AllProducts;
