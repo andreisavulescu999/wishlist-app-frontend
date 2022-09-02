@@ -12,7 +12,7 @@ function User() {
   let id = useParams();
 
   const user = FindUser(id);  
-
+  console.log(user);
   const navigate = useNavigate();
   const [email, setEmail] = useState(user.email);
   const [password, setPassword] = useState(user.password);
@@ -32,10 +32,10 @@ function User() {
   //   }
   // };
 
-    const Edit = async(id) => {
+    const Edit = (id) => {
       let data = {username,first_name,last_name, birthday, password, email,age};
       data = JSON.stringify(data);
-      const user = await EditUser(id,data);
+      const user = EditUser(id,data);
       console.log(user);
       navigate(`/user/:${user.id}`);
     };

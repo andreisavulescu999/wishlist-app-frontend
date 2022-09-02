@@ -1,13 +1,18 @@
 import axios from "axios";
 
 export const LoginUser = async(email,password) => {
-    const user = await axios.post(`/user/login`,{email,password})
-    .then(res => {
-      console.log(res);
-      console.log(res.data);
+    const data = JSON.stringify(email,password);
+    console.log(data);
+    const user = await axios.post(`/user/login`,data)
+    .then(resp => {
+        console.log(resp.data);
+    })
+    .catch(err => {
+        // Handle Error Here
+        console.error(err);
     });
     return user;
-}
+};
 
 export const RegisterUser = async (data) => {
     data = JSON.stringify(data);
@@ -25,15 +30,24 @@ export const EditUser = async (id,data) => {
   .then(res => {
     console.log(res);
     console.log(res.data);
-  });
-  return user;
+  }); 
+  return user; 
 } 
 
 export const FindUser = async (id) => {
-  const user = await axios.get(`/user/${id}`,{})
+  const user = await axios.get(`/user/${id}`)
   .then(res => {
     console.log(res);
     console.log(res.data);
   });
   return user;
+} 
+
+export const DeleteUser = async (id) => {
+  const user = await axios.get(`/user/${id}/delete`,{})
+  .then(res => {
+    console.log(res);
+    console.log(res.data);
+  });
+  return 'User deleted';
 } 

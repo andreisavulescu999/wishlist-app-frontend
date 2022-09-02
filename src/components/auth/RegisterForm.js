@@ -97,7 +97,7 @@ function RegisterForm() {
           </Form.Group> */}
       </Row>
       <Button className="mb-3 m-4" variant=" btn btn-primary" onClick={Register}>
-        Submit
+        Register
       </Button>
     </Form>
     </Card>

@@ -1,14 +1,12 @@
 import React, { useState } from "react";
-import Layout from "../components/layout/Layout";
 
-const GeneralContext = React.createContext();
-const GeneralProvider = props => {
+const GeneralContext = React.createContext({});
+
+export const GeneralProvider = (props) => {
     const [token, setToken] = useState(null);
     const [users, setUsers] = useState([]);
 
     return (
-        <>
-        <Layout>
         <GeneralContext.Provider
             value={{
                 token,
@@ -19,10 +17,7 @@ const GeneralProvider = props => {
         >
             {props.children}
         </GeneralContext.Provider>
-        </Layout>
-        </>
-
     );
 };
 
-export { GeneralContext, GeneralProvider };
+export default {GeneralContext};

@@ -2,9 +2,13 @@ import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 
 import {All} from '../../api/product';
+import NewCard from '../card/NewCard';
 
 const AllProducts = () => {
     const products = All();
+    const elements = JSON.parse(products);
+    //object keys 
+    //object values
     if(products){
       products.map(function(elem) {
         return (
@@ -30,7 +34,7 @@ const AllProducts = () => {
     }
     else{
       return (
-        <p>No products records found</p>
+        <NewCard/>
       );
     }
 };

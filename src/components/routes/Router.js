@@ -7,7 +7,8 @@ import Wishlist from "../wishlist/Wishlist";
 import AllProducts from "../product/AllProducts";
 import Chat from '../chat/Chat.js';
 import User from '../auth/User.js';
-import ModalLogin from "../auth/modallogin/ModalLogin.js";
+import Profile from "../auth/profile/Profile.js";
+import { Home } from "../../pages/Home.js";
 
 const Router = () => {
 
@@ -15,9 +16,10 @@ const Router = () => {
         <BrowserRouter>
             <Routes>
                 <Route path=''>
+                    <Route path='/'        element={<Home/>} />
                     <Route path='/login'  element={<LoginForm/>} />
                     <Route path='/register' element={<RegisterForm/>} />
-                    <Route path='/profile'  element={<ModalLogin/>} />
+                    <Route path='/profile'  element={<Profile/>} />
                     <Route path='/products' element={<AllProducts/>} />
                     <Route path='/product/:id' element={<Product/>} />
                     <Route path='/wishlists' element={<Wishlist/>} />

@@ -4,7 +4,6 @@ import NavbarWishlist from "./NavbarWishlist";
 import Container from "react-bootstrap/esm/Container";
 import Router from "../routes/Router";
 
-
 const Layout =({children}) => {    
     return(
         <div className="App">
@@ -12,13 +11,14 @@ const Layout =({children}) => {
         <br></br>
         <br></br>
         <br></br>
-        <Container fluid="md" pt={6}>  
+        <Container fluid="md" pt={6}> 
+        
         <Router>
         {children}            
         </Router>
         </Container>
         <br></br>
-        <footer>
+        <footer className="fixed">
         <FooterWishlist></FooterWishlist>
         </footer>
         </div>

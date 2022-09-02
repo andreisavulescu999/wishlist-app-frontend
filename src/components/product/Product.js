@@ -6,11 +6,18 @@ import Table from 'react-bootstrap/Table';
 import { useParams } from "react-router-dom";
 
 import { getProduct } from '../../api/product';
+import NewCard from '../card/NewCard.js';
 
 
 const Product = () => {
     let id = useParams();
     const product = getProduct(id);
+    if(!product)
+      {
+        return(
+          <NewCard title="No records"/>
+        );
+      }
     const carousel = product.images.map(function(elem) {
       return(
         <Carousel.Item>
