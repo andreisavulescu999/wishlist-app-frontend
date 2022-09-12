@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from '../axios/newaxios';
 
 export const All = async() => {
     const wishlists =  await axios.get(`/wishlist/all`)

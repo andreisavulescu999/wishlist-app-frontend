@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 
-const GeneralContext = React.createContext({});
+export const GeneralContext = React.createContext({});
 
 export const GeneralProvider = (props) => {
     const [token, setToken] = useState(null);
-    const [users, setUsers] = useState([]);
-
+    const [users, setUsers] = useState(null);
+    
+    //localStorage ...
+    //cookies
     return (
         <GeneralContext.Provider
             value={{
@@ -20,4 +22,4 @@ export const GeneralProvider = (props) => {
     );
 };
 
-export default {GeneralContext};
+// export default {GeneralContext};

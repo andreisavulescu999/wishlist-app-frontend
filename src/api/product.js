@@ -1,12 +1,9 @@
-import axios from "axios";
+import axios from '../axios/newaxios';
 
-export const All = async() => {
-    const products =  await axios.get(`/product/all`)
-    .then(res => {
-      console.log(res);
-      console.log(res.data);
-    });
-    return products;
+export const All = async () => {
+    const response = await axios.get(`/product`);
+    console.log(response);
+    return response;
 }
 
 export const getProduct = async(id) => {

@@ -8,11 +8,11 @@ const NewCard = (props) => {
     <Row>
         <Col md={12}>
             <Card>
-            <Card.Img className='rounded shadow-lg' height={props.height} variant="top" src={props.image} />
+            <Card.Img className='rounded shadow-lg' height={props?.height} variant="top" src={props?.image} />
             <Card.Body>
-                <Card.Title>{props.title}</Card.Title>
+                <Card.Title>{props?.title}</Card.Title>
                 <Card.Text>
-                {props.description}
+                {props?.description}
                 </Card.Text>
                 {/* <Button href={props?.link} variant="primary">Go somewhere</Button> */}
             </Card.Body>

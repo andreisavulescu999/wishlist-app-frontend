@@ -6,22 +6,13 @@ import { FindUser,EditUser } from '../../api/user';
 
 import { useNavigate, useParams } from "react-router-dom";
 
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 
 function User() {
   let id = useParams();
-
-  const user = FindUser(id);  
-  console.log(user);
   const navigate = useNavigate();
-  const [email, setEmail] = useState(user.email);
-  const [password, setPassword] = useState(user.password);
-  // const [retype_password] = useState("");
-  const [birthday, setBirthday] = useState(user.birthday);
-  const [username, setUsername] = useState(user.username);
-  const [first_name, setFirstName] = useState(user.first_name);
-  const [last_name, setLastName] = useState(user.last_name);
-  const [age, setAge] = useState(user.age);
+
+  const [user,setUser] = useState([]);
 
   // const RetypePassword = (retype_password) => {
   //   if(password !== retype_password)
@@ -31,47 +22,52 @@ function User() {
   //   </Alert>);
   //   }
   // };
-
-    const Edit = (id) => {
-      let data = {username,first_name,last_name, birthday, password, email,age};
-      data = JSON.stringify(data);
-      const user = EditUser(id,data);
-      console.log(user);
-      navigate(`/user/:${user.id}`);
+    const Edit = async() => {
+      let data = user;
+      const updatedUser = await EditUser(id.id,data);
+      navigate(`/user/:${id.id}`);
     };
-
-
+  useEffect(() => {
+      const getEditUser = async(id) => {
+        const user = await FindUser(id); 
+        setUser(user.data);
+      };
+      getEditUser(id.id);
+    },
+    [FindUser]
+    );
+  
   return (
     <Card>
       <Card.Title  pt={3}>User update</Card.Title>
       <Form>
       <Form.Group className="mb-3 m-2" controlId="formBasicEmail">
         <Form.Label>Username</Form.Label>
-        <Form.Control type="text" value={username} placeholder="Enter username" onChange={(username) => setUsername(username.target.value)}/>
+        <Form.Control type="text" value={user.username} placeholder="Enter username" onChange={(username) => setUser((prev) => ({...prev, username: username.target.value}))}/>
       </Form.Group> 
       <Form.Group className="mb-3 m-2" controlId="formBasicEmail">
         <Form.Label>Firstname</Form.Label>
-        <Form.Control type="text" value={first_name} placeholder="Enter Firstname" onChange={(first_name) => setFirstName(first_name.target.value)}/>
+        <Form.Control type="text" value={user.first_name} placeholder="Enter Firstname" onChange={(first_name) => setUser((prev) => ({...prev, first_name: first_name.target.value}))}/>
       </Form.Group>  
       <Form.Group className="mb-3 m-2" controlId="formBasicEmail">
         <Form.Label>Lastname</Form.Label>
-        <Form.Control type="text" value={last_name} placeholder="Enter Lastname" onChange={(last_name) => setLastName(last_name.target.value)}/>
+        <Form.Control type="text" value={user.last_name} placeholder="Enter Lastname" onChange={(last_name) => setUser((prev) => ({...prev, last_name: last_name.target.value}))}/>
       </Form.Group>  
       <Form.Group className="mb-3 m-2" controlId="formBasicEmail">
         <Form.Label>Birthday</Form.Label>
-        <Form.Control type="date" value={birthday} placeholder="Date" onChange={(date) => setBirthday(date.target.value)}/>
+        <Form.Control type="date" value={user.birthday} placeholder="Date" onChange={(date) => setUser((prev) => ({...prev, date: date.target.value}))}/>
       </Form.Group>  
       <Form.Group className="mb-3 m-2" controlId="formBasicEmail">
         <Form.Label>Age</Form.Label>
-        <Form.Control type="number" value={age} placeholder="Date" onChange={(age) => setAge(age.target.value)}/>
+        <Form.Control type="number" value={user.age} placeholder="Age" onChange={(age) => setUser((prev) => ({...prev, age: age.target.value}))}/>
       </Form.Group>  
       <Form.Group className="mb-3 m-2" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" value={email} placeholder="Enter email" onChange={(email) => setEmail(email.target.value)}/>
+        <Form.Control type="email" value={user.email} placeholder="Enter email" onChange={(email) => setUser((prev) => ({...prev, email: email.target.value}))}/>
       </Form.Group>
       <Form.Group className="mb-3 m-2" controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>
-        <Form.Control type="password" value={password} placeholder="Password" onChange={(password) => setPassword(password.target.value)}/>
+        <Form.Control type="password" value={null} placeholder="Password" onChange={(password) => setUser((prev) => ({...prev, password: password.target.value}))}/>
       </Form.Group>
       {/* <Form.Group className="mb-3 m-2" controlId="formBasicPassword">
         <Form.Label>Retype Password</Form.Label>

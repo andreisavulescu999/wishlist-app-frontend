@@ -4,24 +4,23 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import axios from 'axios';
+// import axios from 'axios';
 
-import GeneralProvider from '../src/context/GeneralContext';
+import {GeneralProvider} from '../src/context/GeneralContext';
 
-axios.defaults.baseURL = 'https://locallhost:3001';
-axios.defaults.headers.post['Content-Type'] = 'application/json';
-axios.defaults.params  = {
-    user_id: '',
-    token:'',
-};
+
+// axios.defaults.params  = {
+//     user_id: '',
+//     token:'',
+// };
 // axios.defaults.headers.common['Authorization'] = 'Auth Token';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    {/* <GeneralProvider> */}
+    <GeneralProvider>
           <App />
-    {/* </GeneralProvider> */}
+    </GeneralProvider>
   </React.StrictMode>
 );
 
