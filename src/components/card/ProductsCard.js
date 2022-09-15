@@ -6,16 +6,25 @@ import Col from 'react-bootstrap/esm/Col';
 import ListGroup from 'react-bootstrap/ListGroup';
 import {useState } from 'react';
 
-const Addfeatures = (feature) => {
-    for (var prop in feature) {
-              return(<ListGroup.Item>{prop} : {feature[prop]}</ListGroup.Item>)
-    };
+const AddFeatures = (feature) => {
+    const keys = Object.keys(feature); 
+    const elements = keys.map((elem) =>{
+        return(<ListGroup.Item key={elem}>{elem} : {feature[elem]}</ListGroup.Item>)
+    });
+    return elements;
+}
+
+const AddImage = (image) => {
+    const keys = Object.keys(image); 
+    const elements = keys.map((elem) =>{
+        return (image[elem]);
+    });
+    return elements;
 }
 
 const ProductsCard = (props) => {
-  const [features,setFeatures] = useState([]);
-  const x = Addfeatures(props.features);
-
+  const productFeatures = AddFeatures(props.features);
+  const productImage    = AddImage(props.images);  
   return (
         <Col md={4}>
             <Card style={{ width: '18rem' }}>
@@ -27,7 +36,7 @@ const ProductsCard = (props) => {
                     </Card.Text>
                 </Card.Body>
                 <ListGroup className="list-group-flush">
-                    {x}
+                    {productFeatures}
                 </ListGroup>
                 <Card.Body>
                      <button class="btn btn-primary"><a class="text-white" href={`/product/${props?.id}`}>Go to</a></button>

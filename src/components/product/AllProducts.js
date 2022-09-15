@@ -19,14 +19,14 @@ const AllProducts = () => {
     if(products){
       const elements =  products.map(function(elem) {
         return (
-          <ProductsCard id={elem.id} name={elem.name} features={elem.features}/>
+          <ProductsCard id={elem.id} name={elem.name} features={elem.features} images={elem.images}/>
         );
       });
       return elements; 
     }
     else{
       return (
-        <NewCard title='Create an event' description='birthday, weeding or just to hang out' link='link' height={300}/>
+        <NewCard title='No items' description='No products' link='link' height={300}/>
       );
     }
 

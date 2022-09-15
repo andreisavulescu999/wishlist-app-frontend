@@ -7,21 +7,13 @@ export const All = async () => {
 }
 
 export const getProduct = async(id) => {
-  const product = await axios.get(`/product/${id}`)
-  .then(res => {
-    console.log(res);
-    console.log(res.data);
-  });
+  console.log(id);
+  const product = await axios.get(`/product/${id}`);
   return product;
 }
 
 export const AddProduct = async (data) => {
-  data = JSON.stringify(data);
-  const product = await axios.post(`/product/create`,{data})
-  .then(res => {
-    console.log(res);
-    console.log(res.data);
-  });
+  const product = await axios.post(`/product/create`,data);
   return product;
 } 
 
