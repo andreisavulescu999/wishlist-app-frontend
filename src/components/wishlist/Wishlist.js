@@ -1,23 +1,45 @@
 import Card from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup';
+import { useParams } from 'react-router-dom';
+import { getWishlist,getWishlistProducts } from '../../api/wishlist';
+import { useEffect, useState } from 'react';
+import ProductsCard from '../card/ProductsCard';
 
-const Wishlist = (product) => {
+const Wishlist = () => {
+    let id = useParams();
+    const [wishlist,setWishlist] = useState([]);
+    const [products,setProducts] = useState([]);
+    useEffect(() => {
+      const getCurentWishlist = async(id) => {
+        const CurentWishlist = await getWishlist(id);
+        setWishlist(CurentWishlist.data);
+        const products = CurentWishlist.data.wishlistproducts; 
+        const elements = products.map((elem,index) => {
+           return <ProductsCard index={index} id={elem.product.id} name={elem.product.name} features={elem.product.features} images={elem.product.images}/>
+        });
+        setProducts(elements);
+      };
+      getCurentWishlist(id.id);
+    },
+    [getWishlist]
+    ); 
+
+
+
     return(
-        <Card style={{ width: '18rem' }}>
-          <Card.Img variant="top" src={product.src} />
-          <Card.Body>
-            <Card.Title>{product.title}</Card.Title>
-            <Card.Text>
-                        {product.description}
-            </Card.Text>
-          </Card.Body>
-          <ListGroup className="list-group-flush">
-            <ListGroup.Item>{product.feature}</ListGroup.Item>
-          </ListGroup>
-          {/* <Card.Body>
-            <Card.Link href="#">Card Link</Card.Link>
-          </Card.Body> */}
-        </Card>
+      <>
+        <div class="row">
+          <div class="text-white col-md-12">
+              <h1>{wishlist.name}</h1>
+          </div>
+          <div class="text-white col-md-12">
+              <h1>{wishlist.user_id}</h1>
+          </div>
+        </div>
+        <div class="row">
+            {products}
+        </div>
+      </>
+
     )
 };
 

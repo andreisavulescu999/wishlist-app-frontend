@@ -30,7 +30,7 @@ const ProductsCard = (props) => {
             <Card style={{ width: '18rem' }}>
                 <Card.Img variant="top" src={props?.image?.src} />
                 <Card.Body>
-                    <Card.Title>{props?.name}</Card.Title>
+                    <Card.Title>#{props?.index +1} {props?.name}</Card.Title>
                     <Card.Text>
                                 {props?.description}
                     </Card.Text>

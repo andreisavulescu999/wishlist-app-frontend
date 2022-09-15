@@ -17,9 +17,9 @@ const AllProducts = () => {
     );
     
     if(products){
-      const elements =  products.map(function(elem) {
+      const elements =  products.map((elem,index) => {
         return (
-          <ProductsCard id={elem.id} name={elem.name} features={elem.features} images={elem.images}/>
+          <ProductsCard index={index} id={elem.id} name={elem.name} features={elem.features} images={elem.images}/>
         );
       });
       return elements; 

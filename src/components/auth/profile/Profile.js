@@ -26,7 +26,8 @@ function Profile(){
 	<div class="row d-flex justify-content-center mt-5">
 		<div class="col-12 col-md-8 col-lg-6 col-xl-5">
 			<div class="card py-3 px-2">
-				<p class="text-center mb-3 mt-2">CONNECT WITH</p>
+				<p class="text-center mb-3 mt-2">Login</p>
+				{/* <p class="text-center mb-3 mt-2">CONNECT WITH</p>
 				<div class="row mx-auto">
 					<div class="col-md-4 d-inline  text-white rounded">
                         <AiOutlineFacebook/>
@@ -37,7 +38,7 @@ function Profile(){
 					<div class="col-md-4 d-inline  text-white rounded">
 						<AiOutlineGoogle/>
 					</div>
-				</div>
+				</div> */}
 				<div class="division">
 					<div class="row">
 						<div class="col-3"><div class="line l"></div></div>
